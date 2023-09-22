@@ -1,2 +1,2 @@
-# Exercise
+# Exercism
 https://exercism.org
