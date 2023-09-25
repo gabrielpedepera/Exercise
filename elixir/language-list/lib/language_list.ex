@@ -18,7 +18,7 @@ defmodule LanguageList do
   end
 
   def count(list) do
-    Enum.count(list)
+    length(list)
   end
 
   def functional_list?(list) do
