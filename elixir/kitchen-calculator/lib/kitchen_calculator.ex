@@ -19,10 +19,6 @@ defmodule KitchenCalculator do
     {unit, value / @conversion_table[unit]}
   end
 
-  def from_milliliter({:milliliter, value}, :milliliter) do
-    {:milliliter, value}
-  end
-
   def convert(volume_pair, unit) do
     to_milliliter(volume_pair)
     |> from_milliliter(unit)
