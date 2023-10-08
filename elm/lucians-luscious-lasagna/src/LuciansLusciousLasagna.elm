@@ -13,4 +13,6 @@ preparationTimeInMinutes layers =
 
 elapsedTimeInMinutes : number -> number -> number
 elapsedTimeInMinutes layers minutesInOven =
-    preparationTimeInMinutes layers + minutesInOven
+    layers
+        |> preparationTimeInMinutes
+        |> (+) minutesInOven
