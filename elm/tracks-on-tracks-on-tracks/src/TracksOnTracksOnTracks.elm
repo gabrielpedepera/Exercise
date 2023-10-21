@@ -32,12 +32,11 @@ excitingList languages =
         "Elm" :: _ ->
             True
 
-        _ :: "Elm" :: _ ->
-            if List.length languages <= 3 then
-                True
+        _ :: "Elm" :: [] ->
+            True
 
-            else
-                False
+        _ :: "Elm" :: _ :: [] ->
+            True
 
         _ ->
             False
