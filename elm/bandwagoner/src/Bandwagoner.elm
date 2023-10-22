@@ -39,8 +39,4 @@ rootForTeam team =
         { wins, losses } =
             stats
     in
-    if wins > losses then
-        True
-
-    else
-        False
+    wins > losses
