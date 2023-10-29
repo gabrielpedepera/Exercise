@@ -26,6 +26,7 @@ type Activity
     | Restaurant Cuisine
 
 
+rateActivity : Activity -> Approval
 rateActivity activity =
     case activity of
         Movie Romance ->
