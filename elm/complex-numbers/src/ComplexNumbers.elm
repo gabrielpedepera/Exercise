@@ -15,59 +15,64 @@ module ComplexNumbers exposing
 
 
 type Complex
-    = Todo
+    = Complex Float Float
 
 
 fromPair : ( Float, Float ) -> Complex
-fromPair pair =
-    Debug.todo "Please implement fromPair."
+fromPair ( r, i ) =
+    Complex r i
 
 
 fromReal : Float -> Complex
-fromReal float =
-    Debug.todo "Please implement fromReal."
+fromReal r =
+    Complex r 0.0
 
 
 real : Complex -> Float
-real z =
-    Debug.todo "Please implement real."
+real (Complex r _) =
+    r
 
 
 imaginary : Complex -> Float
-imaginary z =
-    Debug.todo "Please implement imaginary."
+imaginary (Complex _ i) =
+    i
 
 
 conjugate : Complex -> Complex
-conjugate z =
-    Debug.todo "Please implement conjugate."
+conjugate (Complex r i) =
+    Complex r -i
 
 
 abs : Complex -> Float
-abs z =
-    Debug.todo "Please implement abs."
+abs (Complex r i) =
+    sqrt ((r * r) + (i * i))
 
 
 add : Complex -> Complex -> Complex
-add z1 z2 =
-    Debug.todo "Please implement add."
+add (Complex r1 i1) (Complex r2 i2) =
+    Complex (r1 + r2) (i1 + i2)
 
 
 sub : Complex -> Complex -> Complex
-sub z1 z2 =
-    Debug.todo "Please implement sub."
+sub (Complex r1 i1) (Complex r2 i2) =
+    Complex (r1 - r2) (i1 - i2)
 
 
 mul : Complex -> Complex -> Complex
-mul z1 z2 =
-    Debug.todo "Please implement mul."
+mul (Complex r1 i1) (Complex r2 i2) =
+    Complex (r1 * r2 - i1 * i2) (i1 * r2 + r1 * i2)
+
+
+rec : Complex -> Complex
+rec (Complex r i) =
+    Complex (r / (r * r + i * i)) -(i / (r * r + i * i))
 
 
 div : Complex -> Complex -> Complex
 div z1 z2 =
-    Debug.todo "Please implement div."
+    rec z2 |> mul z1
 
 
 exp : Complex -> Complex
-exp z =
-    Debug.todo "Please implement exp."
+exp (Complex r i) =
+    mul (Complex (e ^ r) 0) (Complex (cos i) (sin i))
