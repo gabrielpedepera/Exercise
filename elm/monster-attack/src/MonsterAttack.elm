@@ -7,34 +7,47 @@ type alias MonsterDamage =
 
 attackWithSword1 : MonsterDamage -> Int -> MonsterDamage
 attackWithSword1 monsterDamage strength =
-    Debug.todo "Implement attackWithSword1 function"
+    monsterDamage ++ "Attacked with sword of strength " ++ String.fromInt strength ++ "."
 
 
 attackWithClaw1 : MonsterDamage -> Int -> MonsterDamage
 attackWithClaw1 monsterDamage strength =
-    Debug.todo "Implement attackWithClaw1 function"
+    monsterDamage ++ "Attacked with claw of strength " ++ String.fromInt strength ++ "."
 
 
 attack1 : MonsterDamage -> MonsterDamage
 attack1 monsterDamage =
-    Debug.todo "Implement attack1 function"
+    attackWithSword1 (attackWithClaw1 (attackWithClaw1 (attackWithSword1 monsterDamage 5) 1) 1) 5
 
 
 attackWithSword2 : Int -> MonsterDamage -> MonsterDamage
 attackWithSword2 strength monsterDamage =
-    Debug.todo "Implement attackWithSword2 function"
+    "."
+        |> (++) (String.fromInt strength)
+        |> (++) "Attacked with sword of strength "
+        |> (++) monsterDamage
 
 
 attackWithClaw2 : Int -> MonsterDamage -> MonsterDamage
 attackWithClaw2 strength monsterDamage =
-    Debug.todo "Implement attackWithClaw2 function"
+    "."
+        |> (++) (String.fromInt strength)
+        |> (++) "Attacked with claw of strength "
+        |> (++) monsterDamage
 
 
 attack2 : MonsterDamage -> MonsterDamage
 attack2 monsterDamage =
-    Debug.todo "Implement attack2 function"
+    monsterDamage
+        |> attackWithSword2 5
+        |> attackWithClaw2 1
+        |> attackWithClaw2 1
+        |> attackWithSword2 5
 
 
 attack3 : MonsterDamage -> MonsterDamage
 attack3 =
-    Debug.todo "Implement attack3 function"
+    attackWithSword2 5
+        >> attackWithClaw2 1
+        >> attackWithClaw2 1
+        >> attackWithSword2 5
