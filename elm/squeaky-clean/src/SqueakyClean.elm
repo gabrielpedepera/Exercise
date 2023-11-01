@@ -1,7 +1,7 @@
 module SqueakyClean exposing (clean, clean1, clean2, clean3, clean4)
 
 import Char exposing (isDigit, toCode, toUpper)
-import String exposing (cons, filter, join, replace, split, uncons)
+import String exposing (concat, cons, filter, replace, split, uncons)
 
 
 clean1 : String -> String
@@ -36,7 +36,7 @@ clean3 str =
                         else
                             word
             )
-        |> join ""
+        |> concat
 
 
 clean4 : String -> String
