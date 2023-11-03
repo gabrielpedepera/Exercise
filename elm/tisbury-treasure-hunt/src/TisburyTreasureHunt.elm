@@ -22,8 +22,8 @@ type alias Treasure =
 
 
 placeLocationToTreasureLocation : PlaceLocation -> TreasureLocation
-placeLocationToTreasureLocation ( i, c ) =
-    ( c, i )
+placeLocationToTreasureLocation ( number, char ) =
+    ( char, number )
 
 
 treasureLocationMatchesPlaceLocation : PlaceLocation -> TreasureLocation -> Bool
