@@ -5,21 +5,65 @@ module TisburyTreasureHunt exposing (..)
 -- and using them in the function type annotations
 
 
-placeLocationToTreasureLocation : ( Char, Int ) -> ( Int, Char )
-placeLocationToTreasureLocation placeLocation =
-    Debug.todo "implement this function"
+type alias TreasureLocation =
+    ( Int, Char )
 
 
-treasureLocationMatchesPlaceLocation : ( Char, Int ) -> ( Int, Char ) -> Bool
+type alias PlaceLocation =
+    ( Char, Int )
+
+
+type alias Place =
+    ( String, PlaceLocation )
+
+
+type alias Treasure =
+    ( String, TreasureLocation )
+
+
+placeLocationToTreasureLocation : PlaceLocation -> TreasureLocation
+placeLocationToTreasureLocation ( i, c ) =
+    ( c, i )
+
+
+treasureLocationMatchesPlaceLocation : PlaceLocation -> TreasureLocation -> Bool
 treasureLocationMatchesPlaceLocation placeLocation treasureLocation =
-    Debug.todo "implement this function"
+    placeLocationToTreasureLocation placeLocation == treasureLocation
 
 
-countPlaceTreasures : ( String, ( Char, Int ) ) -> List ( String, ( Int, Char ) ) -> Int
+countPlaceTreasures : Place -> List Treasure -> Int
 countPlaceTreasures place treasures =
-    Debug.todo "implement this function"
+    let
+        ( _, placeLocation ) =
+            place
+
+        treasuresFound =
+            List.filter (\( _, treasureLocation ) -> treasureLocationMatchesPlaceLocation placeLocation treasureLocation) treasures
+    in
+    List.length treasuresFound
 
 
-specialCaseSwapPossible : ( String, TreasureLocation ) -> ( String, PlaceLocation ) -> ( String, TreasureLocation ) -> Bool
+specialCaseSwapPossible : Treasure -> Place -> Treasure -> Bool
 specialCaseSwapPossible ( foundTreasure, _ ) ( place, _ ) ( desiredTreasure, _ ) =
-    Debug.todo "implement this function"
+    let
+        possibleSwap =
+            ( foundTreasure, place, desiredTreasure )
+    in
+    case possibleSwap of
+        ( "Brass Spyglass", "Abandoned Lighthouse", _ ) ->
+            True
+
+        ( "Amethyst Octopus", "Stormy Breakwater", "Crystal Crab" ) ->
+            True
+
+        ( "Amethyst Octopus", "Stormy Breakwater", "Glass Starfish" ) ->
+            True
+
+        ( "Vintage Pirate Hat", "Harbor Managers Office", "Model Ship in Large Bottle" ) ->
+            True
+
+        ( "Vintage Pirate Hat", "Harbor Managers Office", "Antique Glass Fishnet Float" ) ->
+            True
+
+        _ ->
+            False
