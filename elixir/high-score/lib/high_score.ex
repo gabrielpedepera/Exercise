@@ -18,13 +18,7 @@ defmodule HighScore do
   end
 
   def update_score(scores, name, score) do
-    case Map.fetch(scores, name) do
-      {:ok, value} ->
-        Map.put(scores, name, value + score)
-
-      :error ->
-        Map.put(scores, name, score)
-    end
+    Map.update(scores, name, score, &(&1 + score))
   end
 
   def get_players(scores) do
